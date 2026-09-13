@@ -1,0 +1,25 @@
+{
+  "name": "zona18",
+  "private": true,
+  "scripts": {
+    "deploy": "npm run db:migrations:apply && wrangler deploy",
+    "db:migrations:apply": "wrangler d1 migrations apply DB --remote",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "^4.45.0"
+  },
+  "cloudflare": {
+    "bindings": {
+     "SECRET": {
+        "description": "Kata sandi webhook. Tempel nilai yang sama di pengaturan webhook Saweria."
+      },
+      "ROBLOX_KEY": {
+        "description": "Kunci yang dibaca game Roblox. Salin nilai ini ke `Config.WEBHOOK_KEY` di **BebeqSwrConfig**. Buat acak dan berbeda dari SECRET."
+      },
+      "ADMIN_KEY": {
+        "description": "Kata sandi halaman admin (buka URL Worker di browser). Dari sana kamu bisa melihat, menambah, dan menghapus donasi. Jangan dibagikan."
+      }
+    }
+  }
+}

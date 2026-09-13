@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "zona18",
+  "main": "worker.js",
+  "compatibility_date": "2026-08-28",
+  "observability": { "enabled": true },
+
+  // Binding WAJIB bernama "DB" -- worker.js memanggil env.DB.
+  // database_id sengaja tidak diisi: tombol Deploy to Cloudflare akan membuat
+  // database D1 baru di akun customer lalu mengisi ID-nya secara otomatis.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "zona18swr","database_id": "fe890da3-97a7-45e4-8308-31d82b16df0d"
+    }
+  ],
+
+  // Bukan rahasia, jadi boleh di sini. Isi "1" untuk menyimpan payload webhook
+  // mentah ke tabel logs (berguna saat mendiagnosis platform baru).
+  "vars": {
+    "LOG_RAW": "0"
+  }
+}
